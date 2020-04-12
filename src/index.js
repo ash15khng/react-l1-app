@@ -17,10 +17,28 @@ import ReactDOM from 'react-dom';
 // serviceWorker.unregister();
 
 const root = document.getElementById("root");
-let name = "Ashley";
-let jsx = (
-  <div><h1>Hello World!</h1>
-  <p>{name}</p></div>
-);
+let person = [{
+  name: "Ashley",
+  age: 15
+},
+{
+  name: "Someone",
+  age: 100
+}];
 
-ReactDOM.render(jsx, root);
+let person2 = {
+  name: "Ashley",
+  age: 15
+}
+
+const Person = (props) => {
+  return (
+    <div>
+      <h1>Hello World!</h1>
+      <p>Name: {props.name}</p>
+      <p>Age: {props.age}</p>
+    </div>
+  );
+};
+
+ReactDOM.render(<Person name={person2.name} age={person2.age} />, root);
