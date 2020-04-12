@@ -42,11 +42,19 @@ const App = () => {
       {
         person.map((elem) => {
           return (
-            <Person name={elem.name} age={elem.age} family={elem.family} image={elem.image} key={elem.name} />
+            <Person 
+              name={elem.name} 
+              age={elem.age} 
+              family={elem.family} 
+              image={elem.image} 
+              key={elem.name} 
+            />
           )
         })
       }
       <button onClick={handleClick}>I am a button</button>
+
+      <p>Name: {person[0].name !== undefined ? person[0].name : "no name"}</p>
     </div>
   );
 }
