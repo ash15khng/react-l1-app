@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Person from "./Person";
 // import './index.css';
 // import App from './App';
 // import * as serviceWorker from './serviceWorker';
@@ -17,6 +18,7 @@ import ReactDOM from 'react-dom';
 // serviceWorker.unregister();
 
 const root = document.getElementById("root");
+
 let person = [{
   name: "Ashley",
   age: 15
@@ -27,18 +29,34 @@ let person = [{
 }];
 
 let person2 = {
-  name: "Ashley",
-  age: 15
+  name: "Someone",
+  age: 100,
 }
 
-const Person = (props) => {
+// const Person = ({name, age}) => {
+//   return (
+//     <div>
+//       <h1>Hello World!</h1>
+//       <p>Name: {name}</p>
+//       <p>Age: {age}</p>
+//     </div>
+//   );
+// };
+
+
+
+const App = () => {
   return (
     <div>
-      <h1>Hello World!</h1>
-      <p>Name: {props.name}</p>
-      <p>Age: {props.age}</p>
+      {
+        person.map((elem) => {
+          return (
+            <Person name={elem.name} age={elem.age} />
+          )
+        })
+      }
     </div>
   );
-};
+}
 
-ReactDOM.render(<Person name={person2.name} age={person2.age} />, root);
+ReactDOM.render(<App />, root);
