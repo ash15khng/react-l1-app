@@ -1,17 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const Counter = () => {
 
-  let [counter, setState] = useState(0);
-  let addCounter = () => {
-    setState(counter + 1);
-  };
-  let subtractCounter = () => {
-    setState(counter - 1);
-  };
-  let resetCounter = () => {
-    setState(0);
-  }
+  let counterData = JSON.parse(localStorage.getItem("counter"));
+  let [counter, setState] = useState(counterData || 0);
+  let addCounter = () => setState(counter + 1);
+  let subtractCounter = () => setState(counter - 1);
+  let resetCounter = () => setState(0);
+
+  useEffect(() => {
+    localStorage.setItem("counter", JSON.stringify(counter));  
+
+  });
 
   return (
     <div style={{textAlign: "center"}}>
