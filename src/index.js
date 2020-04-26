@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Person from "./Person";
-import Counter from "./Counter";
-import Calculator from "./Calculator";
+// import Counter from "./Counter";
+// import Calculator from "./Calculator";
+import NoteApp from "./NoteApp";
 
 const root = document.getElementById("root");
 
@@ -46,4 +47,5 @@ const App = () => {
   );
 }
 
-ReactDOM.render(<Calculator />, root);
+
+ReactDOM.render(<NoteApp />, root);
