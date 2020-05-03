@@ -12,9 +12,10 @@ const Note = ({title, body}) => {
 }
 
 const NoteApp = () => {
+  let notesData = JSON.parse(localStorage.getItem("notes"));
   let [title, setTitle] = useState("");
   let [body, setBody] = useState("");
-  let [notes, setNotes] = useState([]);
+  let [notes, setNotes] = useState(notesData || []);
 
   function titleChange(e) {
     setTitle(e.target.value);
@@ -27,16 +28,17 @@ const NoteApp = () => {
     setNotes([...notes, { // spread operator
       title, body
     }]);
-    console.log(notes);
+    setTitle("");
+    setBody("");
   }
-  function removeNote(index) {
+  function removeNote(noteIndex) {
     return () => {
-      setNotes(notes.filter((item, ind) => ind !== index));
+      setNotes(notes.filter((item, index) => index !== noteIndex));
     }
   }
 
   useEffect(() => {
-    console.log(notes);
+    localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]); // only runs when notes changes not when anything changes
 
   return (
