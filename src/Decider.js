@@ -6,7 +6,9 @@ const Decider = () => {
   let [decision, setDecision] = useState("");
   function addChoice(e) {
     e.preventDefault();
-    setList([...list, choice]);
+    if (choice !== "") {
+      setList([...list, choice]);
+    }
     setChoice("");
   }
   function inputChange(e) {
