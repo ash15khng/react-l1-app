@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import Person from "./Person";
 // import Counter from "./Counter";
 // import Calculator from "./Calculator";
-import NoteApp from "./NoteApp";
+// import NoteApp from "./NoteApp";
+import Decider from "./Decider";
 
 const root = document.getElementById("root");
 
@@ -48,4 +49,4 @@ const App = () => {
 }
 
 
-ReactDOM.render(<NoteApp />, root);
+ReactDOM.render(<Decider />, root);
