@@ -31,7 +31,7 @@ const NoteApp = () => {
   }
   function removeNote(index) {
     return () => {
-      setNotes(notes.filter(note => note.index !== index));
+      setNotes(notes.filter((item, ind) => ind !== index));
     }
   }
 
