@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Person from "./Person";
+// import Person from "./Person";
 // import Counter from "./Counter";
 // import Calculator from "./Calculator";
 // import NoteApp from "./NoteApp";
-import Decider from "./Decider";
+// import Decider from "./Decider";
+import Instafake from "./Instafake";
 
 const root = document.getElementById("root");
 
+/*
 let person = [{
   name: "Someone",
   age: 10,
@@ -20,6 +22,7 @@ let person = [{
   family: ["mother", "father", "brother"],
   image: "https://randomwordgenerator.com/img/picture-generator/tree-736885_640.jpg"
 }];
+
 
 const App = () => {
   let handleClick = () => {
@@ -47,6 +50,5 @@ const App = () => {
     </div>
   );
 }
-
-
-ReactDOM.render(<Decider />, root);
+*/
+ReactDOM.render(<Instafake />, root);
