@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom';
 // import Calculator from "./Calculator";
 // import NoteApp from "./NoteApp";
 // import Decider from "./Decider";
-import Instafake from "./Instafake";
+// import Instafake from "./Instafake";
+import DndDice from "./DndDice"
 
 const root = document.getElementById("root");
 
@@ -51,4 +52,4 @@ const App = () => {
   );
 }
 */
-ReactDOM.render(<Instafake />, root);
+ReactDOM.render(<DndDice />, root);
