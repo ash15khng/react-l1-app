@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from "react";
 import firebase from "./database";
 
-const DataPull = () => {
+let [title, setTitle] = useState("");
+let [image, setImage] = useState("");
+let [alt, setAlt] = useState("");
+let [caption, setCaption] = useState("");
 
+const DataPull = () => {
   let [data, setData] = useState([]);
   useEffect(() => {
     firebase.database().ref("/posts").on("value", (snapshot) => {
@@ -30,12 +34,38 @@ const Post = ({title, image, alt, caption}) => {
   );
 };
 
+const submitPost = () => {
+  DataPush({title, image, alt, caption});
+}
+const titleChange = (e) => {
+  setTitle(e.target.value);
+};
+const imageChange = (e) => {
+  setImage(e.target.value);
+};
+const altChange = (e) => {
+  setAlt(e.target.value);
+};
+const captionChange = (e) => {
+  setCaption(e.target.value);
+};
 
 const Instafake = () => {
   let data = DataPull();
   console.log(data);
   return (
     <div>
+      <form onSubmit={submitPost}>
+        <label>Title: </label>
+        <input type="text" value={title} onChange={titleChange}></input>
+        <label>Image: </label>
+        <input type="text" value={image} onChange={imageChange}></input>
+        <label>Alt: </label>
+        <input type="text" value={alt} onChange={altChange}></input>
+        <label>Caption: </label>
+        <input type="text" value={caption} onChange={captionChange}></input>
+        <button></button>
+      </form>
       {
         data.map((post) => {
           return <Post 
