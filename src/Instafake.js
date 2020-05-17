@@ -1,19 +1,19 @@
 import React, {useState, useEffect} from "react";
 import firebase from "./database";
 
-let [title, setTitle] = useState("");
-let [image, setImage] = useState("");
-let [alt, setAlt] = useState("");
-let [caption, setCaption] = useState("");
 
 const DataPull = () => {
   let [data, setData] = useState([]);
   useEffect(() => {
     firebase.database().ref("/posts").on("value", (snapshot) => {
-      let data = snapshot.val();
-      let dataArray = Object.entries(data);
-      setData(dataArray);
-      console.log(dataArray);
+      try {
+        let data = snapshot.val();
+        let dataArray = Object.entries(data);
+        setData(dataArray);
+        console.log(dataArray);
+      } catch {
+        setData([]);
+      }
     });
     return () => firebase.database().off();
   }, []);
@@ -25,34 +25,50 @@ const DataPush = ({title, image, alt, caption}) => {
 };
 
 const Post = ({title, image, alt, caption}) => {
+
+  function removePost() {
+    firebase.database().ref("/posts/"+title).remove();
+  }
   return (
     <div>
       <h1>{title}</h1>
       <img src={image} alt={alt}></img>
       <p>{caption}</p>
+      <button onClick={removePost}>Delete post</button>
     </div>
   );
 };
 
-const submitPost = () => {
-  DataPush({title, image, alt, caption});
-}
-const titleChange = (e) => {
-  setTitle(e.target.value);
-};
-const imageChange = (e) => {
-  setImage(e.target.value);
-};
-const altChange = (e) => {
-  setAlt(e.target.value);
-};
-const captionChange = (e) => {
-  setCaption(e.target.value);
-};
+
 
 const Instafake = () => {
+  let [title, setTitle] = useState("");
+  let [image, setImage] = useState("");
+  let [alt, setAlt] = useState("");
+  let [caption, setCaption] = useState("");
   let data = DataPull();
   console.log(data);
+  
+  const submitPost = (e) => {
+    e.preventDefault(); 
+    DataPush({title, image, alt, caption});
+    setTitle("");
+    setImage("");
+    setAlt("");
+    setCaption("");
+  }
+  const titleChange = (e) => {
+    setTitle(e.target.value);
+  };
+  const imageChange = (e) => {
+    setImage(e.target.value);
+  };
+  const altChange = (e) => {
+    setAlt(e.target.value);
+  };
+  const captionChange = (e) => {
+    setCaption(e.target.value);
+  };
   return (
     <div>
       <form onSubmit={submitPost}>
@@ -64,7 +80,7 @@ const Instafake = () => {
         <input type="text" value={alt} onChange={altChange}></input>
         <label>Caption: </label>
         <input type="text" value={caption} onChange={captionChange}></input>
-        <button></button>
+        <button>Submit</button>
       </form>
       {
         data.map((post) => {
