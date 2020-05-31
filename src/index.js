@@ -6,7 +6,8 @@ import ReactDOM from 'react-dom';
 // import NoteApp from "./NoteApp";
 // import Decider from "./Decider";
 // import Instafake from "./Instafake";
-import DndDice from "./DndDice"
+// import DndDice from "./DndDice";
+import Newsapp from "./Newsapp";
 
 const root = document.getElementById("root");
 
@@ -52,4 +53,4 @@ const App = () => {
   );
 }
 */
-ReactDOM.render(<DndDice />, root);
+ReactDOM.render(<Newsapp />, root);

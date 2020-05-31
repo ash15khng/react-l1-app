@@ -50,22 +50,35 @@ const Dice = ({dtype, dtimes, dadd}) => {
       <p>Result: {result}</p>
     </div>
   );
-}
+};
 
 const DndDice = () => {
   let [dice, setDice] = useState([
-    {type: 6, times: 1, add: 0},
-    {type: 100, times: 1, add: 1}
+    <Dice dtype={6} dtimes={1} dadd={0} />,
+    <Dice dtype={100} dtimes={1} add={1} />
   ]);
-  let [display, setDisplay] = useState([]);
+  let [logs, setLogs] = useState([]);
   return (
     <div>
       <h1>DND DICE ROLLER</h1>
-      {
-        dice.map((die) => {
-          return (<Dice key={`${die.times}D${die.type}+${die.add}`} dtype={die.type} dtimes={die.times} dadd={die.add} />)
-        })
-      }
+      <div>
+        {
+          dice.map((die) => {
+            return die
+          })
+        }
+      </div>
+      <div>
+        <h2>Your rolls</h2>
+        <ul>
+          {
+            logs.map(log => {
+              return <li>{log}</li>;
+            })
+          }
+        </ul>
+      </div>
+      
     </div>
   );
 };
