@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import "./Newsapp.css";
 
 const News = ({title, image, desc, url}) => {
   return (
@@ -33,16 +34,17 @@ const Newspage = () => {
 
   return (
     <div>
-      <h1>Top news today:</h1>
-      <form onSubmit={searchNews}>
+      <h1 className="header">Top news today:</h1>
+      <form onSubmit={searchNews} className="searchbar">
         <label>Search terms: </label>
         <input type="text" value={search} onChange={searchChange}></input>
         <button>Search</button> 
       </form>
-      <div>
+      <div className="newslist">
         {
           news.map((item) => {
             return (<News 
+            className="newsitem"
             key={item.title}
             title={item.title} 
             image={item.urlToImage}
